@@ -1,5 +1,3 @@
-# SmartBrain-api - v2
-Final project for Udemy course
 
 1. Clone this repo
 2. Run `npm install`
@@ -8,4 +6,4 @@ Final project for Udemy course
 
 You can grab Clarifai API key [here](https://www.clarifai.com/)
 
-** Make sure you use postgreSQL instead of mySQL for this code base.
+** Make sure you use your own postgreSQL database
