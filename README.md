@@ -1,4 +1,5 @@
-#Face Detection Api
+# Face Detection Api
+
 Final Project for Zero to Mastery Udemy Course
 
 1. Clone this repo
