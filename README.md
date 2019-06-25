@@ -1,3 +1,5 @@
+#Face Detection Api
+Final Project for Zero to Mastery Udemy Course
 
 1. Clone this repo
 2. Run `npm install`
