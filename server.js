@@ -25,13 +25,23 @@ const db = knex({
 	}
 });
 
-app.get('/', (req, res)=> { res.send(db.users) })
-app.post('/signin', signin.handleSignin(db, bcrypt))
-app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
-app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
-app.put('/image', (req, res) => { image.handleImage(req, res, db)})
-app.post('/imageUrl', (req, res) => { image.handleApiCall(req, res)})
+app.get("/", (req, res) => {
+	res.send("welcome");
+});
+
+app.post("/signin", signin.handleSignIn(db, bcrypt));
+
+app.post("/register", register.handleRegister(db, bcrypt));
+
+app.get("/profile/:id", profile.handleProfile(db));
+
+app.put("/image", image.handleImage(db));
+app.post("/imageUrl", image.handleApiCall());
 app.post("/image-upload", image.handleImageUpload());
+
+app.get("*", (req, res) => {
+	res.send("sorry, nothing here((");
+});
 
 app.listen(process.env.PORT || 3000, function(){
 	console.log("server starts");
