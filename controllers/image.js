@@ -55,11 +55,11 @@ const handleImage = (db) => (req, res) => {
 
 	db("users")
 		.where("id", "=", id)
-		.increment("entry", 1)
-		.returning("entry")
-	.then( entry => {
-		if(entry.length){
-			res.json(entry);
+		.increment("entries", 1)
+		.returning("entries")
+	.then( entries => {
+		if(entries.length){
+			res.json(entries);
 		} else {
 			res.status(400).json("unable to get entries of user with id = " + id);
 		}
