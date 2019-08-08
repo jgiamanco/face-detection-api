@@ -3,20 +3,20 @@ const app = new Clarifai.App({
    apiKey: process.env.API_CLARIFAI
 });
 
-const multer = require('multer');
-const storage = multer.diskStorage({
+var multer = require('multer');
+var storage = multer.diskStorage({
   filename: function(req, file, callback) {
     callback(null, Date.now() + file.originalname);
   }
 });
-const imageFilter = (req, file, cb) => {
+var imageFilter = function (req, file, cb) {
     // accept image files only
     if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
         return cb(new Error("Only image files are allowed!"), false);
     }
     cb(null, true);
 };
-const upload = multer({ storage: storage, fileFilter: imageFilter})
+var upload = multer({ storage: storage, fileFilter: imageFilter})
 
 
 const cloudinary = require("cloudinary");
@@ -37,7 +37,7 @@ const handleImageUpload = () => (req, res) => {
     .then(results => res.json(results));
 }
 
-const escapeRegex = (text) => {
+function escapeRegex(text) {
 	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
 
