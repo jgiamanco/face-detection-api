@@ -6,9 +6,6 @@ const bcrypt = require("bcrypt-nodejs");
 const cors = require("cors");
 const knex = require("knex");
 const formData = require('express-form-data');
-
-const register = require("./controllers/register.js");
-const signin = require("./controllers/signin.js");
 const profile = require("./controllers/profile.js");
 const image = require("./controllers/image.js");
 
