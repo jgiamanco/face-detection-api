@@ -19,11 +19,16 @@ const db = knex({
 
 const app = express();
 
-let corsOptions = {
-   origin : ['https://face-detection-app-inky.vercel.app/'],
-}
-
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: (origin, callback) => {
+    // Check if the origin is allowed
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 app.use(bodyParser.json());
 
 app.get('/', (req, res)=> { res.send("it is working")})
