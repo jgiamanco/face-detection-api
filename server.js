@@ -19,7 +19,11 @@ const db = knex({
 
 const app = express();
 
-app.use(cors())
+let corsOptions = {
+   origin : ['https://face-detection-app-inky.vercel.app/', 'https://facialdetection.netlify.app/'],
+}
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.get('/', (req, res)=> { res.send("it is working")})
